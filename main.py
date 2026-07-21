@@ -4,6 +4,14 @@ import pandas as pd
 import joblib
 
 app = FastAPI()
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 model = joblib.load("tomato_spoilage_model.pkl")
 
